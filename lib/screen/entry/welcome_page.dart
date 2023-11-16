@@ -44,7 +44,7 @@ class _welcomePageState extends State<welcomePage> {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xD9D9D9),
+                    backgroundColor: tdLightBlue,
                     side: BorderSide(
                       color: tdBlack,
                       width: 1,
@@ -74,7 +74,7 @@ class _welcomePageState extends State<welcomePage> {
                     
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xD9D9D9),
+                    backgroundColor: tdLightBlue,
                     side: BorderSide(
                       color: tdBlack,
                       width: 1,
