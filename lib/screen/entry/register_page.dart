@@ -1,5 +1,6 @@
 import 'package:ease_booking_app/constant/colors.dart';
 import 'package:ease_booking_app/screen/entry/login_page.dart';
+import 'package:ease_booking_app/screen/main/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -308,7 +309,10 @@ class _registerScreenState extends State<registerScreen> {
                   ),
                   child: ElevatedButton(
                     onPressed: () {
-                      
+                      Navigator.push(
+                        context, 
+                        MaterialPageRoute(builder: (context) => const homeScreen())
+                      );
                     }, 
                     style: ElevatedButton.styleFrom(
                       foregroundColor: tdBlack, backgroundColor: tdLightBlue,

@@ -66,6 +66,16 @@ flutter:
     - assets/images/Rectangle_right.png
     - assets/images/Rectangle_top.png
     - assets/images/Rectangle_mid.png
+    - assets/images/category/emojione-monotone_tennis.png
+    - assets/images/category/fluent-emoji-high-contrast_pool-8-ball.png
+    - assets/images/category/material-symbols_sports-golf-outline.png
+    - assets/images/category/mdi_shuttlecock.png
+    - assets/images/category/noto_bowling.png
+    - assets/images/category/ph_basketball-duotone.png
+    - assets/images/category/ph_soccer-ball-duotone.png
+    - assets/images/category/ph_volleyball-duotone.png
+    - assets/images/F9ReKz8bEAAPghK.jpg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
