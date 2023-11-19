@@ -14,9 +14,17 @@ class registerScreen extends StatefulWidget {
 class _registerScreenState extends State<registerScreen> {
   bool _isHiddenPassword = true;
   bool _isHiddenConfirmedPassword = true;
+  bool _isActive = false;
+
+  void _toggleActive() {
+    setState(() {
+      _isActive = !_isActive;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       body: Backgrounds(
         child: SafeArea(
@@ -309,13 +317,14 @@ class _registerScreenState extends State<registerScreen> {
                   ),
                   child: ElevatedButton(
                     onPressed: () {
+                      _toggleActive();
                       Navigator.push(
                         context, 
                         MaterialPageRoute(builder: (context) => const homeScreen())
                       );
                     }, 
                     style: ElevatedButton.styleFrom(
-                      foregroundColor: tdBlack, backgroundColor: tdLightBlue,
+                      foregroundColor: tdBlack, backgroundColor: _isActive ? tdDarkerBlue : tdLightBlue,
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(5)),
                         side : BorderSide(color:  Colors.black),

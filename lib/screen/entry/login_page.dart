@@ -13,6 +13,14 @@ class loginScreen extends StatefulWidget {
 
 class _loginScreenState extends State<loginScreen> {
   bool _isHidden = true;
+  bool _isActive = false;
+
+  void _toggleActive() {
+    setState(() {
+      _isActive = !_isActive;
+    });
+  }
+
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -205,6 +213,7 @@ class _loginScreenState extends State<loginScreen> {
                     ),
                     child: ElevatedButton(
                       onPressed: () {
+                        _toggleActive();
                         if(_formKey.currentState?.validate() ?? false){
                           Navigator.push(
                             context, 
@@ -213,7 +222,7 @@ class _loginScreenState extends State<loginScreen> {
                         } 
                       }, 
                       style: ElevatedButton.styleFrom(
-                        foregroundColor: tdBlack, backgroundColor: tdLightBlue,
+                        foregroundColor: tdBlack, backgroundColor: _isActive ? tdDarkerBlue : tdLightBlue,
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(5)),
                           side : BorderSide(color:  Colors.black),

@@ -1,18 +1,19 @@
 import 'package:ease_booking_app/constant/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter/cupertino.dart';
 
 enum iconFilter { filter, distance, price, time, setting}
 
-class categoryScreen extends StatefulWidget {
-  const categoryScreen({super.key});
+class searchPage extends StatefulWidget {
+  const searchPage({super.key});
 
   @override
-  State<categoryScreen> createState() => _categoryScreenState();
+  State<searchPage> createState() => _searchPageState();
 }
 
-class _categoryScreenState extends State<categoryScreen> {
+class _searchPageState extends State<searchPage> {
+  final TextEditingController _searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,18 +33,51 @@ class _categoryScreenState extends State<categoryScreen> {
                         }, 
                         icon: Icon(Icons.arrow_back_ios)
                       ),
-                      Text(
-                        "Nama Category",
-                        style : GoogleFonts.montserratAlternates(
-                          color: tdBlack,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500
-                        )
+                      Container(
+                        width: 265,
+                        height: 42,
+                        child: TextField(
+                          controller: _searchController,
+                          style: GoogleFonts.montserrat(
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal
+                          ),
+                          decoration: InputDecoration(
+                              filled: true, 
+                              fillColor: tdLightBlue,
+                              labelText: 'Search',
+                              labelStyle: GoogleFonts.montserrat(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                color : const Color.fromARGB(53, 0, 0, 0)
+                              ),
+                              floatingLabelStyle: GoogleFonts.montserrat(
+                                fontWeight: FontWeight.w500,
+                                color :  Colors.black
+                              ),
+                              border: const OutlineInputBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                              ),
+                              enabledBorder: const OutlineInputBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(color: Colors.black, width: 1), 
+                              ),
+                              focusedBorder: const OutlineInputBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(color: Colors.black, width: 1), 
+                              ),
+                            ),
+                            onSubmitted: (value) {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => searchPage(),));
+                            },
+                          ),
                       ),
                       SizedBox(width: 50,)
                     ],
                   ),
-                
+
+                  SizedBox(height: 10,),
+
                   Center(
                     child: FilterChipExample(),
                   ),

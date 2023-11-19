@@ -1,4 +1,5 @@
 import 'package:ease_booking_app/screen/main/category_page.dart';
+import 'package:ease_booking_app/screen/main/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -25,6 +26,7 @@ class _homeScreenState extends State<homeScreen> {
 
   @override
   Widget build(BuildContext context) {
+  final TextEditingController _searchController = TextEditingController();
   Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Backgrounds(
@@ -43,6 +45,7 @@ class _homeScreenState extends State<homeScreen> {
                         width: 265,
                         height: 42,
                         child: TextField(
+                          controller: _searchController,
                           style: GoogleFonts.montserrat(
                             fontSize: 16,
                             fontWeight: FontWeight.normal
@@ -72,6 +75,9 @@ class _homeScreenState extends State<homeScreen> {
                                 borderSide: BorderSide(color: Colors.black, width: 1), 
                               ),
                             ),
+                            onSubmitted: (value) {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => searchPage(),));
+                            },
                           ),
                       ),
           
