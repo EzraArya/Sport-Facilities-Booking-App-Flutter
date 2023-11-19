@@ -1,4 +1,5 @@
 import 'package:ease_booking_app/constant/colors.dart';
+import 'package:ease_booking_app/screen/product/product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/cupertino.dart';
@@ -56,26 +57,31 @@ class _categoryScreenState extends State<categoryScreen> {
                        child: ListView.builder(
                           shrinkWrap: false,
                           itemBuilder: (context, index) {
-                            return Container(
-                              child: Card(
-                                  color: tdLightBlue,
-                                  shadowColor: tdBlack,
-                                  child: ListTile(
-                                    title: Text(
-                                      "Lapangan $index",
-                                      style: GoogleFonts.montserratAlternates(
-                                        fontSize: 20,
+                            return InkWell(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => productScreen(),));
+                              },
+                              child: Container(
+                                child: Card(
+                                    color: tdLightBlue,
+                                    shadowColor: tdBlack,
+                                    child: ListTile(
+                                      title: Text(
+                                        "Lapangan $index",
+                                        style: GoogleFonts.montserratAlternates(
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                      subtitle: Text(
+                                        "Alamat Lapangan",
+                                        style: GoogleFonts.montserratAlternates(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w200
+                                        ),
                                       ),
                                     ),
-                                    subtitle: Text(
-                                      "Alamat Lapangan",
-                                      style: GoogleFonts.montserratAlternates(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w200
-                                      ),
-                                    ),
-                                  ),
-                                
+                                  
+                                ),
                               ),
                             );
                           }, 
