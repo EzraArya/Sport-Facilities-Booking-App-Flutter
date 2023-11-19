@@ -3,14 +3,14 @@ import 'package:ease_booking_app/screen/main/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class failedScreen extends StatefulWidget {
-  const failedScreen({super.key});
+class successScreen extends StatefulWidget {
+  const successScreen({super.key});
 
   @override
-  State<failedScreen> createState() => _failedScreenState();
+  State<successScreen> createState() => _successScreenState();
 }
 
-class _failedScreenState extends State<failedScreen> {
+class _successScreenState extends State<successScreen> {
   bool _isActive = false;
 
   void _toggleActive() {
@@ -32,24 +32,18 @@ class _failedScreenState extends State<failedScreen> {
               children: [
                 SizedBox(height: 100,),
                 Text(
-                  "FAILED",
+                  "SUCCESS",
                   style: GoogleFonts.montserrat(
                     fontSize: 20,
                     fontWeight: FontWeight.bold
                   ),
                 ),
-
                 SizedBox(height: 10,),
-                Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.red
-                  ),
-                  child: Icon(
-                    Icons.close,
-                    color: Colors.white,
-                    size: 150,
-                  ),
+                
+                Icon(
+                  Icons.check_circle_rounded,
+                  color: Colors.green,
+                  size: 150,
                 ),
                 SizedBox(height: 430,),
 
