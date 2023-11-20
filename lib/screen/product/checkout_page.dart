@@ -1,5 +1,7 @@
 import 'package:ease_booking_app/constant/colors.dart';
+import 'package:ease_booking_app/screen/product/product_page.dart';
 import 'package:ease_booking_app/screen/status/failed_screen.dart';
+import 'package:ease_booking_app/screen/status/success_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -33,7 +35,7 @@ class _checkoutScreenState extends State<checkoutScreen> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          Navigator.pop(context);
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => productScreen(),));
                         }, 
                         icon: Icon(Icons.arrow_back_ios, size: 30,)
                       ),
@@ -237,7 +239,7 @@ class _checkoutScreenState extends State<checkoutScreen> {
                                 _toggleActive();
                                 Navigator.push(
                                     context, 
-                                    MaterialPageRoute(builder: (context) => const failedScreen())
+                                    MaterialPageRoute(builder: (context) => const successScreen())
                                 );
                               }, 
                               style: ElevatedButton.styleFrom(

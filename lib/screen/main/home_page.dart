@@ -1,3 +1,5 @@
+import 'package:ease_booking_app/component/background.dart';
+import 'package:ease_booking_app/screen/main/account_page.dart';
 import 'package:ease_booking_app/screen/main/category_page.dart';
 import 'package:ease_booking_app/screen/main/search_page.dart';
 import 'package:flutter/material.dart';
@@ -5,14 +7,14 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../constant/colors.dart';
 
-class homeScreen extends StatefulWidget {
-  const homeScreen({super.key});
+class homePageScreen extends StatefulWidget {
+  const homePageScreen({super.key});
 
   @override
-  State<homeScreen> createState() => _homeScreenState();
+  State<homePageScreen> createState() => _homePageScreenState();
 }
 
-class _homeScreenState extends State<homeScreen> {
+class _homePageScreenState extends State<homePageScreen> {
   List<String> images = [
     'assets/images/category/ph_basketball-duotone.png',
     'assets/images/category/ph_soccer-ball-duotone.png',
@@ -26,10 +28,16 @@ class _homeScreenState extends State<homeScreen> {
 
   @override
   Widget build(BuildContext context) {
+  int _selectedIndex = 0;
+  final _pageController = PageController();
+
+  void _onItemTapped(int index) {
+    _pageController.jumpToPage(index);
+  }
   final TextEditingController _searchController = TextEditingController();
   Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Backgrounds(
+      body: Background(
         child: SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -125,7 +133,7 @@ class _homeScreenState extends State<homeScreen> {
           
                     IconButton(
                       onPressed: () {
-                        
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => accountScreen(),));
                       }, 
                       icon: Icon(
                         Icons.account_circle,
@@ -218,68 +226,6 @@ class _homeScreenState extends State<homeScreen> {
           ),
         )
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Color.fromRGBO(0, 126, 167, 1),
-          selectedItemColor: tdBlack,
-          unselectedItemColor: tdWhite,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home, size: 40,),
-              label: '',
-            ),
-            BottomNavigationBarItem(icon: Icon(Icons.chrome_reader_mode, size: 40,), label: ''),
-            BottomNavigationBarItem(icon: Icon(Icons.chat, size: 40,), label: '')
-          ],
-        ),
-    );
-  }
-}
-
-class Backgrounds extends StatelessWidget {
-  final Widget child;
-  const Backgrounds({
-    super.key, required this.child,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return Container(
-      height: size.height,
-      width: double.infinity,
-      child: Stack(
-        alignment: Alignment.center,
-        children: <Widget>[
-          Positioned(
-            top: 0,
-            right : 0,
-            child: Image.asset(
-              "assets/images/Rectangle_top.png",
-              width: size.width * 0.56,
-            )
-          ),
-
-          Positioned(
-            right: 0,
-            bottom: 100,
-            child: Image.asset(
-              "assets/images/Rectangle_mid.png",
-              width: size.width * 0.75,
-            )),
-
-          Positioned(
-            bottom: 0,
-            left: 0,
-            child: Image.asset(
-              "assets/images/Rectangle_bot.png",
-              width: size.width * 0.7,
-            )
-          ),
-          child,
-        ],
-      ),
     );
   }
 }
