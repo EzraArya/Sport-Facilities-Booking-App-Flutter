@@ -1,5 +1,5 @@
 import 'package:ease_booking_app/constant/colors.dart';
-import 'package:ease_booking_app/screen/main/home_page.dart';
+import 'package:ease_booking_app/screen/product/checkout_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -62,7 +62,7 @@ class _failedScreenState extends State<failedScreen> {
                         _toggleActive();
                         Navigator.push(
                             context, 
-                            MaterialPageRoute(builder: (context) => const homeScreen())
+                            MaterialPageRoute(builder: (context) => const checkoutScreen())
                         );
                       }, 
                       style: ElevatedButton.styleFrom(
@@ -73,7 +73,7 @@ class _failedScreenState extends State<failedScreen> {
                         )
                       ),
                       child: Text(
-                        'Home',
+                        'Try Again',
                         style: GoogleFonts.montserrat(
                           fontWeight: FontWeight.bold,
                           fontSize: 24

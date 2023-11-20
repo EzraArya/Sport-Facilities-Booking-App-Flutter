@@ -29,7 +29,9 @@ class _welcomePageState extends State<welcomePage> {
         child: SafeArea(
           child: Column(
             mainAxisAlignment:MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
+              SizedBox(height: 150,),
               SizedBox(
                 child: Text(
                   "EASE",
