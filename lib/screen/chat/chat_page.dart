@@ -27,6 +27,8 @@ class _chatScreenState extends State<chatScreen> {
                       fontWeight: FontWeight.bold
                     ),
                   ),
+
+                
               ],
             ),
           ),
