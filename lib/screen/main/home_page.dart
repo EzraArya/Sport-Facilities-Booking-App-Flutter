@@ -2,6 +2,7 @@ import 'package:ease_booking_app/component/background.dart';
 import 'package:ease_booking_app/screen/main/account_page.dart';
 import 'package:ease_booking_app/screen/main/category_page.dart';
 import 'package:ease_booking_app/screen/main/search_page.dart';
+import 'package:ease_booking_app/screen/product/product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -203,18 +204,23 @@ class _homePageScreenState extends State<homePageScreen> {
           
                       SizedBox(height:20),
           
-                      Container(
-                        width: 350,
-                        height: 420,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: tdBlack, width: 1),
-                          borderRadius: BorderRadius.circular(20)
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.asset(
-                            'assets/images/F9ReKz8bEAAPghK.jpg',
-                            fit: BoxFit.cover,
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => productScreen(),));
+                        },
+                        child: Container(
+                          width: 350,
+                          height: 420,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: tdBlack, width: 1),
+                            borderRadius: BorderRadius.circular(20)
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.asset(
+                              'assets/images/F9ReKz8bEAAPghK.jpg',
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
