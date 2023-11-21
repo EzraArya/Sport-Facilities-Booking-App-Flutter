@@ -29,12 +29,6 @@ class _homePageScreenState extends State<homePageScreen> {
 
   @override
   Widget build(BuildContext context) {
-  int _selectedIndex = 0;
-  final _pageController = PageController();
-
-  void _onItemTapped(int index) {
-    _pageController.jumpToPage(index);
-  }
   final TextEditingController _searchController = TextEditingController();
   Size size = MediaQuery.of(context).size;
     return Scaffold(

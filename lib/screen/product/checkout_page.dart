@@ -1,6 +1,5 @@
 import 'package:ease_booking_app/constant/colors.dart';
 import 'package:ease_booking_app/screen/product/product_page.dart';
-import 'package:ease_booking_app/screen/status/failed_screen.dart';
 import 'package:ease_booking_app/screen/status/success_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
