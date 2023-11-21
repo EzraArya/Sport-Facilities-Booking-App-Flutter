@@ -38,7 +38,6 @@ class _chatBoxScreenState extends State<chatBoxScreen> {
 
   @override
   Widget build(BuildContext context) {
-  Size size = MediaQuery.of(context).size;    
     return Scaffold(
       body: Background(
         child: SafeArea(
