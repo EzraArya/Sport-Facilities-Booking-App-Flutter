@@ -1,4 +1,6 @@
 import 'package:ease_booking_app/constant/colors.dart';
+import 'package:ease_booking_app/screen/main/bottom_navigation_bar.dart';
+import 'package:ease_booking_app/screen/main/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -29,8 +31,7 @@ class _searchPageState extends State<searchPage> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          Navigator.pop(context);
-                        }, 
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => homeScreen(),));                        }, 
                         icon: Icon(Icons.arrow_back_ios)
                       ),
                       Container(

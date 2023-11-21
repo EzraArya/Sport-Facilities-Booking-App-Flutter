@@ -1,4 +1,5 @@
 import 'package:ease_booking_app/constant/colors.dart';
+import 'package:ease_booking_app/screen/main/category_page.dart';
 import 'package:ease_booking_app/screen/product/checkout_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -47,7 +48,7 @@ class _productScreenState extends State<productScreen> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          Navigator.pop(context);
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => categoryScreen(),));
                         }, 
                         icon: Icon(Icons.arrow_back_ios)
                       ),

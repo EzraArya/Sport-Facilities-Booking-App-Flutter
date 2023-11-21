@@ -45,6 +45,7 @@ class _chatScreenState extends State<chatScreen> {
                             width: 300,
                             height: 100,
                             decoration: BoxDecoration(
+                              color: tdWhite,
                               border: Border.all(color: tdBlack, width: 1),
                               borderRadius: BorderRadius.circular(20)
                             ),
