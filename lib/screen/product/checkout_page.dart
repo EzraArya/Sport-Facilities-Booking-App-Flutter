@@ -13,13 +13,23 @@ class checkoutScreen extends StatefulWidget {
 
 class _checkoutScreenState extends State<checkoutScreen> {
   bool _isActive = false;
-
+  var _selectedPaymentMethod;
+  
   void _toggleActive() {
     setState(() {
       _isActive = !_isActive;
       _isActive = !_isActive;
     });
   }
+
+  final List <String> _paymentMethod = [
+    "Bank 1",
+    "Bank 2",
+    "Bank 3",
+    "Bank 4",
+    "Bank 5",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +57,7 @@ class _checkoutScreenState extends State<checkoutScreen> {
                   width: 350,
                   height: 600,
                   decoration: BoxDecoration(
+                    color: tdWhite,
                     border: Border.all(color: tdDarkerBlue, width: 1),
                     borderRadius: BorderRadius.circular(20)
                   ),
@@ -117,100 +128,238 @@ class _checkoutScreenState extends State<checkoutScreen> {
                         ),
                       ),
 
-                      SizedBox(height: 50,),
-
-                      Center(
-                        child: Text(
-                          "Payment Method",
-                          style: GoogleFonts.montserratAlternates(
-                            fontSize: 25,
-                            fontWeight: FontWeight.w500
-                          ),
-                        ),
-                      ),
-
-                      SizedBox(height: 15,),
-
-                      Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              width : 100,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                color: tdLightBlue,
-                                border: Border.all(color: tdBlack, width: 1),
-                                borderRadius: BorderRadius.circular(30)
-                              ),
-                              child: IconButton(
-                                padding: EdgeInsets.zero,
-                                onPressed: () {
-                                  
-                                }, 
-                                icon: Icon(
-                                  Icons.payment,
-                                  size: 60,
-                                )),
-                            ),
-
-                            SizedBox(width: 30,),
-
-                            Container(
-                              width : 100,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                color: tdLightBlue,
-                                border: Border.all(color: tdBlack, width: 1),
-                                borderRadius: BorderRadius.circular(30)
-                              ),
-                              child: IconButton(
-                                padding: EdgeInsets.zero,
-                                onPressed: () {
-                                  
-                                }, 
-                                icon: Icon(
-                                  Icons.payments_outlined,
-                                  size: 60,
-                                )),
-                            )
-                          ],
-                        ),
-                      ),
-
                       SizedBox(height: 20,),
 
-                      Center(
-                        child : SizedBox(
-                          width: 230,
-                          height: 40,
-                          child: Container(
-                            child: ElevatedButton(
-                              onPressed: () {
-                                _toggleActive();
-                                Navigator.push(
-                                    context, 
-                                    MaterialPageRoute(builder: (context) => const checkoutScreen())
-                                );
-                              }, 
-                              style: ElevatedButton.styleFrom(
-                                foregroundColor: tdBlack, backgroundColor: _isActive ? tdDarkerBlue : tdLightBlue,
-                                shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                                  side : BorderSide(color:  Colors.black),
-                                )
-                              ),
-                              child: Text(
-                                'Click for more method',
-                                style: GoogleFonts.montserrat(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 15
+                      Container(
+                        margin: EdgeInsets.only(left: 4.0, right: 4.0),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 8.0,),
+                          child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                        "Metode Pembayaran",
+                                        style: GoogleFonts.montserrat(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold
+                                        ),
+                                      ),
+                          
+                                      TextButton(
+                                        onPressed: () {
+                                          showModalBottomSheet(
+                                            useSafeArea: true,
+                                            barrierColor: Colors.black26,
+                                            backgroundColor: Colors.white,
+                                            isScrollControlled: true,
+                                            context: context, 
+                                            builder: (context) {
+                                              return Container(
+                                                height: 600, 
+                                                decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius: BorderRadius.only(
+                                                    topLeft: Radius.circular(20),
+                                                    topRight: Radius.circular(20),
+                                                  )
+                                                ),
+                                                child: SingleChildScrollView(
+                                                  child: Column(
+                                                      mainAxisAlignment: MainAxisAlignment.start,
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        Row(
+                                                          children : [
+                                                            ElevatedButton(
+                                                              onPressed: () {
+                                                                Navigator.pop(context);
+                                                              },
+                                                              style: ButtonStyle(
+                                                                backgroundColor: MaterialStatePropertyAll(Colors.white),
+                                                                elevation: MaterialStatePropertyAll(0),
+                                                                  shape: MaterialStateProperty.all(
+                                                                    RoundedRectangleBorder(
+                                                                      borderRadius: BorderRadius.only(
+                                                                        topLeft: Radius.circular(20),
+                                                                        topRight: Radius.circular(20),
+                                                                      )
+                                                                    )
+                                                                  ),
+                                                                ), 
+                                                              child: Icon(
+                                                                Icons.close,
+                                                                color: Colors.black,
+                                                                size: 30,
+                                                              )
+                                                           ),
+                                                
+                                                           Text(
+                                                              "Pilih Metode Pembayaran", 
+                                                              style: GoogleFonts.montserrat(
+                                                                fontSize: 20,
+                                                                fontWeight: FontWeight.bold
+                                                              ),
+                                                            ),
+                                                          ] 
+                                                        ),
+                                                  
+                                                        Padding(
+                                                          padding: const EdgeInsets.only(left : 20.0,right: 20.0, top: 8),
+                                                          child: Column(
+                                                            mainAxisAlignment: MainAxisAlignment.start,
+                                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                                            children: [
+                                                              Text(
+                                                                "Bank Transfer", 
+                                                                style: GoogleFonts.montserrat(
+                                                                  fontSize: 15,
+                                                                  fontWeight: FontWeight.bold
+                                                                ),
+                                                              ),
+                                                
+                                                              Container(
+                                                                height: 500, 
+                                                                child: ListView.separated(
+                                                                  shrinkWrap: true,
+                                                                  itemBuilder: (context, index) {
+                                                                    return InkWell(
+                                                                      onTap: () {
+                                                                        Navigator.pop(context);
+                                                                      },
+                                                                      child: Container(
+                                                                        height: 40,
+                                                                        child: ListTile(
+                                                                          title: Text(
+                                                                            "Bank $index",
+                                                                            style: GoogleFonts.montserrat(
+                                                                              fontSize: 12,
+                                                                              fontWeight: FontWeight.w500
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  }, 
+                                                                  separatorBuilder: (context, index) {
+                                                                    return Divider();
+                                                                  }, 
+                                                                  itemCount: 10),
+                                                              ),
+                                                
+                                                              SizedBox(height: 2,),
+                                                
+                                                              Text(
+                                                                "E-Wallet", 
+                                                                style: GoogleFonts.montserrat(
+                                                                  fontSize: 15,
+                                                                  fontWeight: FontWeight.bold
+                                                                ),
+                                                              ),
+                                                
+                                                              Container(
+                                                                height: 170, 
+                                                                child: ListView.separated(
+                                                                  shrinkWrap: true,
+                                                                  itemBuilder: (context, index) {
+                                                                    return InkWell(
+                                                                      onTap: () {
+                                                                        Navigator.pop(context);
+                                                                      },
+                                                                      child: Container(
+                                                                        height: 40,
+                                                                        child: ListTile(
+                                                                          title: Text(
+                                                                            "E-Wakket $index",
+                                                                            style: GoogleFonts.montserrat(
+                                                                              fontSize: 12,
+                                                                              fontWeight: FontWeight.w500
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  }, 
+                                                                  separatorBuilder: (context, index) {
+                                                                    return Divider();
+                                                                  }, 
+                                                                  itemCount: 3),
+                                                              )
+                                                            ],
+                                                          ),
+                                                        ),
+                                                  
+                                                      ],
+                                                    ),
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        }, 
+                                        child: Text(
+                                          "Lihat semua",
+                                          style: GoogleFonts.montserrat(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.blue
+                                          ),
+                                        )
+                                      )
+                                  ],
                                 ),
-                              ),
-                            ),
+
+                                Container(
+                                  width: 450,
+                                  height: 1,
+                                  decoration: BoxDecoration(
+                                    color: tdBlack
+                                  ),
+                                ),
+
+                                Container(
+                                  height: 200,
+                                  child: ListView.separated(
+                                    itemBuilder: (context, index) {
+                                      return Container(
+                                        height: 50,
+                                        child: RadioListTile<int>(
+                                          value: index,
+                                          groupValue: _selectedPaymentMethod,
+                                          title: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.payment
+                                              ),
+                                              SizedBox(width: 10,),
+                                              Text(
+                                                _paymentMethod[index],
+                                                style: GoogleFonts.montserrat(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.bold
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          onChanged: (value) {
+                                            setState(() {
+                                              _selectedPaymentMethod = value;
+                                            });
+                                          },
+                                          controlAffinity: ListTileControlAffinity.trailing,
+                                        ),
+                                      );
+                                    }, 
+                                    separatorBuilder: (context, index) {
+                                      return Divider();
+                                    }, 
+                                    itemCount: _paymentMethod.length),
+                                )
+                              ],
                           ),
                         ),
                       ),
+
 
                       SizedBox(height: 30,),
 
